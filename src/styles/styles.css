@@ -1,0 +1,399 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P','Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+}
+
+.fighters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
+
+.fighter {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.fighter:hover {
+    box-shadow: 0 0 50px 10px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.name {
+    align-self: center;
+    font-size: 21px;
+    margin-top: 20px;
+}
+
+.fighter-image {
+    height: 260px;
+}
+
+#loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    visibility: hidden;
+}
+.modal{
+    width:20%;
+    height: 40%;
+    min-width: 155px;
+    max-height: 300px;
+    background-color: whitesmoke;
+    border-radius: 2%;
+    position: fixed;
+    z-index: 2; 
+    left: 40%;
+    top: 0;
+}
+.modal-button{
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 95%;
+    cursor: pointer;
+}
+.modal-wrap{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+.controls--wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 0 100px;
+}
+.icon{
+    margin: 0;
+    height: 50px;
+    width: 40px;
+    background-image: url("https://bitbucket.org/marynaboieva/stage-2-es6-for-everyone/raw/aaccacb887806971c49a2100345a3cbe32a0a7c0/src/images/icons.png");
+    background-size:cover;
+}
+.label:first-child>.icon{
+    background-position: -80px 0;
+}.label:nth-child(2)>.icon{
+    background-position: -210px 0;
+}
+.label:nth-child(3)>.icon{
+    background-position: -40px 0;
+}
+.label:nth-child(4)>.icon{
+    background-position: -120px 0;
+}
+.label:nth-child(5)>.icon{
+    background-position: -170px 0;
+}
+.label{
+    font-size: 10px;
+}
+.label input{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.label input:checked~.icon{
+    border: 1px solid darkred;
+}
+#start-fight,.controls--button,.back{
+    display: block;
+    font-size: 0.7em;
+    border:none;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    background-color: darkolivegreen;
+}
+#start-fight{
+    margin: 0 auto;
+}
+#start-fight:active.controls--button:active,.back:active{
+    background-color: crimson;
+}
+.congrad{
+    text-align: center;
+    animation:text 1s steps(2) infinite;
+    width: 50%;
+}
+@keyframes text{
+    50%{transform:scale(1.25); text-shadow: cornsilk};
+}
+.progress{
+    width: 49%;
+    height: 20px;
+    background-color:red;
+    display: flex;
+}
+.bar{
+    height: 100%;
+    background-color: orange;
+}
+.stage{
+    position: relative;
+    width: 90%;
+    height: 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url('https://bitbucket.org/marynaboieva/stage-2-es6-for-everyone/raw/1719b76f91545b7b0d47850d6af30516c8e01329/src/images/stage.gif');
+}
+.player{
+    position: absolute;
+    top:50%;
+    width: 78px;
+    height: 175px;
+    background-image: url('https://bitbucket.org/marynaboieva/stage-2-es6-for-everyone/raw/aaccacb887806971c49a2100345a3cbe32a0a7c0/src/images/sprite.png');
+}
+#player1{
+    left: 47%;
+}
+#player2{
+    left: 53%;
+}
+.right{
+    transform: scale(-1, 1);
+}
+.Ryu{
+    animation:Ryu-idle 0.5s steps(4) infinite;
+}
+.Ryu--punch{
+    animation:Ryu-punch 0.2s steps(2) infinite;
+}
+.Ryu--dodge{
+    animation:Ryu-dodge 0.3s steps(2) infinite;
+}
+.Ryu--victory{
+    animation: Ryu-victory 0.5s steps(3) 1 forwards;
+}
+.Ryu--death{
+    animation: Ryu-death 0.5s steps(5) 1 forwards;
+}
+@keyframes Ryu-idle{
+    0%{background-position:0 0;}
+    100%{background-position: -340px 0;}
+}
+@keyframes Ryu-punch{
+    0%{background-position: -340px 0;}
+    100%{background-position: -510px 0;}
+}
+@keyframes Ryu-dodge{
+    0%{background-position: -595px 0;}
+    100%{background-position: -765px 0;}
+}
+@keyframes Ryu-victory{
+    0%{background-position: 0px -175px;}
+    100%{background-position: -170px -175px;}
+}
+@keyframes Ryu-death{
+    0%{background-position: -255px -175px;}
+    100%{background-position: -595px -175px;}
+}
+.Dhalsim{
+    animation:Dhalsim-idle 0.9s steps(9) infinite;
+}
+.Dhalsim--punch{
+    animation:Dhalsim-punch 0.3s steps(3) infinite;
+}
+.Dhalsim--dodge{
+    animation:Dhalsim-dodge 0.3s steps(1) infinite;
+}
+.Dhalsim--victory{
+    animation: Dhalsim-victory 0.5s steps(3) 1 forwards;
+}
+.Dhalsim--death{
+    animation: Dhalsim-death 0.5s steps(5) 1 forwards;
+}
+@keyframes Dhalsim-idle{
+    0%{background-position:0 -2100px;}
+    100%{background-position: -770px -2100px;}
+}
+@keyframes Dhalsim-punch{
+    0%{background-position: -510px -1575px;}
+    100%{background-position: -770px -1575px;}
+}
+@keyframes Dhalsim-dodge{
+    0%{background-position: 0px -1925px;}
+    100%{background-position: -680px -1925px;}
+}
+@keyframes Dhalsim-victory{
+    0%{background-position: 0px -1925px;}
+    100%{background-position: -255px -1925px;}
+}
+@keyframes Dhalsim-death{
+    0%{background-position: -255px -1925px;}
+    100%{background-position: -595px -1925px;}
+}
+.Gulie{
+    animation:Gulie-idle 0.3s steps(3) infinite;
+}
+.Guile--punch{
+    animation:Gulie-punch 0.2s steps(2) infinite;
+}
+.Guile--dodge{
+    animation:Gulie-dodge 0.3s steps(2) infinite;
+}
+.Guile--victory{
+    animation: Gulie-victory 0.7s steps(7) 1 forwards;
+}
+.Guile--death{
+    animation: Gulie-death 0.5s steps(5) 1 forwards;
+}
+@keyframes Gulie-idle{
+    0%{background-position:0 -1400px;}
+    100%{background-position: -255px -1400px;}
+}
+@keyframes Gulie-punch{
+    0%{background-position: -255px -1400px;}
+    100%{background-position: -425px -1400px;}
+}
+@keyframes Gulie-dodge{
+    0%{background-position: -510px -1400px;}
+    100%{background-position: -680px -1400px;}
+}
+@keyframes Gulie-victory{
+    0%{background-position: 0px -1750px;}
+    100%{background-position: -595px -1750px;}
+}
+@keyframes Gulie-death{
+    0%{background-position: 0px -1575px;}
+    100%{background-position: -425px -1575px;}
+}
+.Zangief{
+    animation:Zangief-idle 0.3s steps(3) infinite;
+}
+.Zangief--punch{
+    animation:Zangief-punch 0.2s steps(2) infinite;
+}
+.Zangief--dodge{
+    animation:Zangief-dodge 0.3s steps(2) infinite;
+}
+.Zangief--victory{
+    animation:Zangief-victory 0.5s steps(5) 1 forwards;
+}
+.Zangief--death{
+    animation:Zangief-death 0.3s steps(3) 1 forwards;
+}
+@keyframes Zangief-idle{
+    0%{background-position: 0px -350px;}
+    100%{background-position: -255px -350px;}
+}
+@keyframes Zangief-punch{
+    0%{background-position: -425px -350px;}
+    100%{background-position: -595px -350px;}
+}
+@keyframes Zangief-dodge{
+    0%{background-position: -255px -350px;}
+    100%{background-position: -425px -350px;}
+}
+@keyframes Zangief-victory{
+    0%{background-position: 0px -525px;}
+    100%{background-position: -425px -525px;}
+}
+@keyframes Zangief-death{
+    0%{background-position: 0px -700px;}
+    100%{background-position: -340px -700px;}
+}
+.Ken{
+    animation:Ken-idle 0.3s steps(3) infinite;
+}
+.Ken--punch{
+    animation:Ken-punch 0.2s steps(2) infinite;
+}
+.Ken--dodge{
+    animation:Ken-dodge 0.3s steps(2) infinite;
+}
+.Ken--victory{
+    animation:Ken-victory 0.3s steps(3) 1 forwards;
+}
+.Ken--death{
+    animation:Ken-death 0.3s steps(3) 1 forwards;
+}
+@keyframes Ken-idle{
+    0%{background-position: -425px -700px;}
+    100%{background-position: -680px -700px;}
+}
+@keyframes Ken-punch{
+    0%{background-position: -510px -525px;}
+    100%{background-position: -680px -525px;}
+}
+@keyframes Ken-dodge{
+    0%{background-position: 0px -875px;}
+    100%{background-position: -170px -875px;}
+}
+@keyframes Ken-victory{
+    0%{background-position: -255px -875px;}
+    100%{background-position: -340px -875px;}
+}
+@keyframes Ken-death{
+    0%{background-position: 0px -1050px;}
+    100%{background-position: -340px -1050px;}
+}
+.Bison{
+    animation:Bison-idle 0.3s steps(3) infinite;
+}
+.Bison--punch{
+    animation:Bison-punch 0.4s steps(4) infinite;
+}
+.Bison--dodge{
+    animation:Bison-dodge 0.3s steps(2) infinite;
+}
+.Bison--victory{
+    animation:Bison-victory 0.2s steps(2) 1 forwards;
+}
+.Bison--death{
+    animation:Bison-death 0.3s steps(3) 1 forwards;
+}
+@keyframes Bison-idle{
+    0%{background-position: -425px -875px;}
+    100%{background-position: -680px -875px;}
+}
+@keyframes Bison-punch{
+    0%{background-position: 0px -1225px;}
+    100%{background-position: -340px -1225px;}
+}
+@keyframes Bison-dodge{
+    0%{background-position: -340px -1225px;}
+    100%{background-position: -510px -1225px;}
+}
+@keyframes Bison-victory{
+    0%{background-position: -510px -1225px;}
+    100%{background-position: -595px -1225px;}
+}
+@keyframes Bison-death{
+    0%{background-position: -510px -1050px;}
+    100%{background-position: -680px -1050px;}
+}

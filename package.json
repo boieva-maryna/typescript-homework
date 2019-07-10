@@ -1,0 +1,31 @@
+{
+  "name": "typescript-homework",
+  "version": "1.0.0",
+  "description": "Управление(игрок 1/игрок 2): атака-(w/стрелочка вверх) уклониться(можно только в момент удара)-(s/стрелочка вниз)",
+  "main": "index.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boieva-maryna/typescript-homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boieva-maryna/typescript-homework/issues"
+  },
+  "homepage": "https://github.com/boieva-maryna/typescript-homework#readme"
+}
