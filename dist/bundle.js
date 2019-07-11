@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -95,12 +95,12 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-!(function webpackMissingModule() { var e = new Error("Cannot find module './src/tscript/app'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _src_tscript_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/tscript/app */ "./src/tscript/app.ts");
 /* harmony import */ var _src_styles_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/styles/styles.css */ "./src/styles/styles.css");
 /* harmony import */ var _src_styles_styles_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_styles_styles_css__WEBPACK_IMPORTED_MODULE_1__);
 
 
-new !(function webpackMissingModule() { var e = new Error("Cannot find module './src/tscript/app'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
+new _src_tscript_app__WEBPACK_IMPORTED_MODULE_0__["default"]();
 
 
 /***/ }),
@@ -756,6 +756,924 @@ var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyl
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./src/tscript/app.ts":
+/*!****************************!*\
+  !*** ./src/tscript/app.ts ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _fightersView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fightersView */ "./src/tscript/fightersView.ts");
+/* harmony import */ var _services_fightersService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/fightersService */ "./src/tscript/services/fightersService.ts");
+/* harmony import */ var _fightView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fightView */ "./src/tscript/fightView.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+var App = /** @class */ (function () {
+    function App() {
+        this.startApp();
+    }
+    App.prototype.startApp = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var fighters, fightersView, fightersElement, fight, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, 3, 4]);
+                        App.loadingElement.style.visibility = 'visible';
+                        return [4 /*yield*/, _services_fightersService__WEBPACK_IMPORTED_MODULE_1__["fighterService"].getFighters()];
+                    case 1:
+                        fighters = _a.sent();
+                        fightersView = new _fightersView__WEBPACK_IMPORTED_MODULE_0__["default"](fighters);
+                        fightersElement = fightersView.element;
+                        App.rootElement.appendChild(fightersElement);
+                        fight = new _fightView__WEBPACK_IMPORTED_MODULE_2__["default"](fightersView);
+                        document.body.appendChild(fight.element);
+                        return [3 /*break*/, 4];
+                    case 2:
+                        error_1 = _a.sent();
+                        console.warn(error_1);
+                        App.rootElement.innerText = 'Failed to load data';
+                        return [3 /*break*/, 4];
+                    case 3:
+                        App.loadingElement.style.visibility = 'hidden';
+                        return [7 /*endfinally*/];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    App.rootElement = document.getElementById('root');
+    App.loadingElement = document.getElementById('loading-overlay');
+    return App;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (App);
+
+
+/***/ }),
+
+/***/ "./src/tscript/fightView.ts":
+/*!**********************************!*\
+  !*** ./src/tscript/fightView.ts ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view */ "./src/tscript/view.ts");
+/* harmony import */ var _fighter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fighter */ "./src/tscript/fighter.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
+
+
+var FightView = /** @class */ (function (_super) {
+    __extends(FightView, _super);
+    function FightView(fightersView) {
+        var _this = _super.call(this) || this;
+        _this.throttle = function (func, limit) {
+            var inThrottle;
+            return function () {
+                var args = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    args[_i] = arguments[_i];
+                }
+                if (!inThrottle) {
+                    func.apply(void 0, __spread(args));
+                    inThrottle = setTimeout(function () { return inThrottle = false; }, limit);
+                }
+            };
+        };
+        _this.createControls(fightersView);
+        _this.isFinished = false;
+        _this.player1;
+        _this.player2;
+        _this.winner;
+        return _this;
+    }
+    FightView.prototype.getChoice = function (fightersView, id1, id2) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, _b, _c, _d;
+            return __generator(this, function (_e) {
+                switch (_e.label) {
+                    case 0:
+                        _a = this;
+                        _b = _fighter__WEBPACK_IMPORTED_MODULE_1__["default"].bind;
+                        return [4 /*yield*/, fightersView.getInfo(id1)];
+                    case 1:
+                        _a.player1 = new (_b.apply(_fighter__WEBPACK_IMPORTED_MODULE_1__["default"], [void 0, _e.sent()]))();
+                        _c = this;
+                        _d = _fighter__WEBPACK_IMPORTED_MODULE_1__["default"].bind;
+                        return [4 /*yield*/, fightersView.getInfo(id2)];
+                    case 2:
+                        _c.player2 = new (_d.apply(_fighter__WEBPACK_IMPORTED_MODULE_1__["default"], [void 0, _e.sent()]))();
+                        document.getElementsByClassName("bar")[0].innerHTML = String(this.player1.health);
+                        document.getElementsByClassName("bar")[1].innerHTML = String(this.player2.health);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FightView.prototype.createControls = function (fightersView) {
+        var _this = this;
+        this.element = this.createElement({ tagName: 'div', className: 'controls' });
+        this.element.appendChild(this.createElement({ tagName: 'div', className: 'controls--wrap' }));
+        var ch1 = this.createCheckBox("1", "Ryu");
+        var ch2 = this.createCheckBox("2", "Dhalsim");
+        var ch3 = this.createCheckBox("3", "Gulie");
+        var ch4 = this.createCheckBox("4", "Zangief");
+        var ch5 = this.createCheckBox("5", "Ken");
+        var ch6 = this.createCheckBox("6", "Bison");
+        var submit = this.createElement({ tagName: 'a', className: 'controls--button' });
+        submit.innerText = "Choose";
+        this.element.firstChild.append(ch1, ch2, ch3, ch4, ch5, ch6, submit);
+        submit.addEventListener("click", function () { _this.handleStartClick(fightersView); });
+        var start = this.createElement({ tagName: 'a', className: 'controls' });
+        start.innerText = "Start";
+        start.id = "start-fight";
+        start.addEventListener("click", function () {
+            if (!_this.isFinished)
+                _this.handlePress();
+        });
+        start.style.display = "none";
+        document.body.append(start);
+        var stage = this.createElement({ tagName: 'div', className: 'stage' });
+        var gamer1 = this.createPlayerFrame("1");
+        var gamer2 = this.createPlayerFrame("2");
+        stage.append(gamer1, gamer2);
+        stage.style.display = "none";
+        document.getElementById("root").append(stage);
+        var congrad = this.createElement({ tagName: 'h1', className: 'congrad' });
+        congrad.style.display = "none";
+        var back = this.createElement({ tagName: 'a', className: 'back' });
+        back.onclick = function () { _this.startAgain(); };
+        back.style.display = "none";
+        var hp1 = this.createProgressBar();
+        var hp2 = this.createProgressBar();
+        document.body.append(congrad, back);
+        var container = this.createElement({ tagName: "div", className: "controls--wrap" });
+        container.append(hp1, hp2);
+        container.id = "progress-bars";
+        container.style.display = "none";
+        document.body.insertBefore(container, document.getElementById("root"));
+    };
+    FightView.prototype.createProgressBar = function () {
+        var progress = this.createElement({ tagName: 'div', className: "progress" });
+        var bar = this.createElement({ tagName: 'div', className: "bar" });
+        bar.style.width = "100%";
+        progress.append(bar);
+        return progress;
+    };
+    FightView.prototype.createCheckBox = function (id, text) {
+        var label = this.createElement({ tagName: 'label', className: 'label' });
+        var checkbox = this.createElement({ tagName: 'input', className: 'checkbox' });
+        checkbox.type = "checkbox";
+        checkbox.id = id;
+        label.appendChild(checkbox);
+        label.append(document.createTextNode(text));
+        label.append(this.createElement({ tagName: 'div', className: 'icon' }));
+        return label;
+    };
+    FightView.prototype.createPlayerFrame = function (id) {
+        var frame = this.createElement({ tagName: 'div', className: 'player' });
+        frame.id = "player" + id;
+        return frame;
+    };
+    FightView.prototype.handleStartClick = function (fightersView) {
+        return __awaiter(this, void 0, void 0, function () {
+            var id1, id2, checkboxes, checked;
+            return __generator(this, function (_a) {
+                id1 = "";
+                id2 = "";
+                checkboxes = Array.from(document.getElementsByClassName("checkbox"));
+                checked = checkboxes.filter(function (elem) { return elem.checked == true; });
+                switch (checked.length) {
+                    case 0:
+                        id1 = id2 = "1";
+                        document.getElementById("player1").className = "player Ryu";
+                        document.getElementById("player2").className = "player right Ryu";
+                        break;
+                    case 1:
+                        id1 = id2 = checked[0].id;
+                        document.getElementById("player1").className = "player " + checked[0].parentNode.innerText;
+                        document.getElementById("player2").className = "player right " + checked[0].parentNode.innerText;
+                        break;
+                    default:
+                        id1 = checked[0].id;
+                        id2 = checked[1].id;
+                        document.getElementById("player1").className = "player " + checked[0].parentNode.innerText;
+                        document.getElementById("player2").className = "player right " + checked[1].parentNode.innerText;
+                        break;
+                }
+                this.getChoice(fightersView, id1, id2);
+                document.getElementsByClassName("stage")[0].style.display = "block";
+                document.getElementById("start-fight").style.display = "block";
+                document.getElementById("progress-bars").style.display = "flex";
+                this.element.style.display = "none";
+                document.getElementsByClassName("fighters")[0].style.display = "none";
+                return [2 /*return*/];
+            });
+        });
+    };
+    FightView.prototype.handlePress = function () {
+        var _this = this;
+        //кривовато
+        var player1_elem = document.getElementById("player1");
+        var player2_elem = document.getElementById("player2");
+        var hp1 = document.getElementsByClassName("bar")[0];
+        var hp2 = document.getElementsByClassName("bar")[1];
+        var width1 = this.player1.health;
+        var width2 = this.player2.health; //нужно для формулы
+        var map = {};
+        var handler = function (event) {
+            map[event.keyCode] = event.type == "keydown";
+            if (map['40'] && map['87']) {
+                player1_elem.classList.add(_this.player1.name + "--punch");
+                setTimeout(function () { player1_elem.classList.remove(_this.player1.name + "--punch"); }, 200);
+                player2_elem.classList.add(_this.player2.name + "--dodge");
+                setTimeout(function () { player2_elem.classList.remove(_this.player2.name + "--dodge"); }, 300);
+                map = {};
+            }
+            else if (map['38'] && map['83']) {
+                player2_elem.classList.add(_this.player2.name + "--punch");
+                setTimeout(function () { player2_elem.classList.remove(_this.player2.name + "--punch"); }, 200);
+                player1_elem.classList.add(_this.player1.name + "--dodge");
+                setTimeout(function () { player1_elem.classList.remove(_this.player1.name + "--dodge"); }, 300);
+                map = {};
+            }
+            else if (map['87']) {
+                _this.fight(_this.player1, _this.player2, hp2, width2);
+                player1_elem.classList.add(_this.player1.name + "--punch");
+                setTimeout(function () { player1_elem.classList.remove(_this.player1.name + "--punch"); }, 200);
+                map = {};
+            }
+            else if (map['38']) {
+                _this.fight(_this.player2, _this.player1, hp1, width1);
+                player2_elem.classList.add(_this.player2.name + "--punch");
+                setTimeout(function () { player2_elem.classList.remove(_this.player2.name + "--punch"); }, 200);
+                map = {};
+            }
+            if (_this.checkWin(player1_elem, player2_elem))
+                document.body.removeEventListener("keydown", f);
+        };
+        var f = this.throttle(handler, 200); //вызываем обработчик с задержкой
+        document.getElementById("start-fight").style.display = "none";
+        document.body.addEventListener("keydown", f);
+        document.body.addEventListener("keyup", f);
+    };
+    FightView.prototype.fight = function (player1, player2, hp, width) {
+        var damage = player2.getBlockPower() - player1.getHitPower();
+        if (damage <= 0) {
+            player2.health += damage;
+            hp.innerText = String(player2.health);
+            hp.style.width = Number.parseInt(hp.style.width) + 100 * damage / width + "%";
+        }
+    };
+    FightView.prototype.checkWin = function (player1_elem, player2_elem) {
+        if (this.player1.health <= 0 || this.player2.health <= 0) {
+            if (this.player1.health > this.player2.health) {
+                this.winner = "Player 1";
+                player1_elem.classList.add(this.player1.name + "--victory"); // ОБЯЗАТЕЛЬНО СДЕЛАТЬ АНИМАЦИЮ ПРОИГРЫША
+                player2_elem.classList.add(this.player2.name + "--death");
+            }
+            else {
+                this.winner = "Player 2";
+                player2_elem.classList.add(this.player2.name + "--victory");
+                player1_elem.classList.add(this.player1.name + "--death");
+            }
+            this.isFinished = true;
+            var congrad = document.getElementsByClassName("congrad")[0];
+            congrad.style.display = "inline-block";
+            congrad.innerText = this.winner + " won!";
+            document.getElementsByClassName("back")[0].style.display = "inline-block";
+            return true;
+        }
+    };
+    FightView.prototype.startAgain = function () {
+        this.player1.reset();
+        this.player2.reset();
+        this.isFinished = false;
+        this.element.style.display = "flex";
+        document.getElementsByClassName("fighters")[0].style.display = "flex";
+        document.getElementsByClassName("stage")[0].style.display = "none";
+        document.getElementsByClassName("congrad")[0].style.display = "none";
+        document.getElementsByClassName("back")[0].style.display = "none";
+        document.getElementsByClassName("bar")[0].style.width = "100%";
+        document.getElementsByClassName("bar")[1].style.width = "100%";
+        document.getElementById("progress-bars").style.display = "none";
+    };
+    return FightView;
+}(_view__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (FightView);
+
+
+/***/ }),
+
+/***/ "./src/tscript/fighter.ts":
+/*!********************************!*\
+  !*** ./src/tscript/fighter.ts ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Fighter = /** @class */ (function () {
+    function Fighter(fighterInfo) {
+        var name = fighterInfo.name, health = fighterInfo.health, attack = fighterInfo.attack, defense = fighterInfo.defense, source = fighterInfo.source;
+        this.name = name;
+        this.health = health;
+        this.attack = attack;
+        this.defense = defense;
+        this.source = source;
+    }
+    Fighter.prototype.chance = function () {
+        return Math.floor(1 + Math.random() * 2);
+    };
+    Fighter.prototype.getHitPower = function () {
+        return this.attack * this.chance();
+    };
+    Fighter.prototype.getBlockPower = function () {
+        return this.defense * this.chance();
+    };
+    Fighter.prototype.reset = function () {
+        this.name = "";
+        this.health = 0;
+        this.attack = 0;
+        this.defense = 0;
+        this.source = "";
+    };
+    return Fighter;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (Fighter);
+
+
+/***/ }),
+
+/***/ "./src/tscript/fighterView.ts":
+/*!************************************!*\
+  !*** ./src/tscript/fighterView.ts ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view */ "./src/tscript/view.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var FighterView = /** @class */ (function (_super) {
+    __extends(FighterView, _super);
+    function FighterView(fighter, handleClick) {
+        var _this = _super.call(this) || this;
+        _this.createFighter(fighter, handleClick);
+        return _this;
+    }
+    FighterView.prototype.createFighter = function (fighter, handleClick) {
+        var name = fighter.name, source = fighter.source;
+        var nameElement = this.createName(name);
+        var imageElement = this.createImage(source);
+        this.element = this.createElement({ tagName: 'div', className: 'fighter' });
+        this.element.append(imageElement, nameElement);
+        this.element.addEventListener('click', function (event) { return handleClick(event, fighter); }, false);
+    };
+    FighterView.prototype.createName = function (name) {
+        var nameElement = this.createElement({ tagName: 'span', className: 'name' });
+        nameElement.innerText = name;
+        return nameElement;
+    };
+    FighterView.prototype.createImage = function (source) {
+        var attributes = { src: source };
+        var imgElement = this.createElement({
+            tagName: 'img',
+            className: 'fighter-image',
+            attributes: attributes
+        });
+        return imgElement;
+    };
+    return FighterView;
+}(_view__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (FighterView);
+
+
+/***/ }),
+
+/***/ "./src/tscript/fightersView.ts":
+/*!*************************************!*\
+  !*** ./src/tscript/fightersView.ts ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view */ "./src/tscript/view.ts");
+/* harmony import */ var _fighterView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fighterView */ "./src/tscript/fighterView.ts");
+/* harmony import */ var _modalView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modalView */ "./src/tscript/modalView.ts");
+/* harmony import */ var _services_fightersService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/fightersService */ "./src/tscript/services/fightersService.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
+
+
+
+
+var FightersView = /** @class */ (function (_super) {
+    __extends(FightersView, _super);
+    function FightersView(fighters) {
+        var _this = _super.call(this) || this;
+        _this.fightersDetailsMap = new Map();
+        _this.handleClick = _this.handleFighterClick.bind(_this);
+        _this.createFighters(fighters);
+        return _this;
+    }
+    FightersView.prototype.createFighters = function (fighters) {
+        var _a;
+        var _this = this;
+        var fighterElements = fighters.map(function (fighter) {
+            var fighterView = new _fighterView__WEBPACK_IMPORTED_MODULE_1__["default"](fighter, _this.handleClick);
+            return fighterView.element;
+        });
+        this.element = this.createElement({ tagName: 'div', className: 'fighters' });
+        (_a = this.element).append.apply(_a, __spread(fighterElements));
+    };
+    FightersView.prototype.handleFighterClick = function (event, fighter) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _id, myelem, fighterInfo, myelem2, list, i, key;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _id = fighter._id;
+                        myelem = document.getElementsByClassName("modal-wrap");
+                        return [4 /*yield*/, this.getInfo(_id)];
+                    case 1:
+                        fighterInfo = _a.sent();
+                        if (myelem.length == 0) {
+                            myelem2 = new _modalView__WEBPACK_IMPORTED_MODULE_2__["default"](fighterInfo);
+                            document.body.append(myelem2.element);
+                        }
+                        else {
+                            myelem[0].style.display = "block";
+                            list = myelem[0].getElementsByClassName("modal-text");
+                            i = 0;
+                            Object.defineProperty(fighterInfo, "_id", { enumerable: false });
+                            Object.defineProperty(fighterInfo, "source", { enumerable: false });
+                            for (key in fighterInfo) {
+                                if (i < list.length) {
+                                    list[i].innerText = key + ":" + fighterInfo[key];
+                                }
+                                i++;
+                            }
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FightersView.prototype.getInfo = function (_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var res;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!!this.fightersDetailsMap.has(_id)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, _services_fightersService__WEBPACK_IMPORTED_MODULE_3__["fighterService"].getFighterDetails(_id)];
+                    case 1:
+                        res = _a.sent();
+                        this.fightersDetailsMap.set(_id, res);
+                        _a.label = 2;
+                    case 2: return [2 /*return*/, this.fightersDetailsMap.get(_id)];
+                }
+            });
+        });
+    };
+    return FightersView;
+}(_view__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (FightersView);
+
+
+/***/ }),
+
+/***/ "./src/tscript/helpers/apiHelper.ts":
+/*!******************************************!*\
+  !*** ./src/tscript/helpers/apiHelper.ts ***!
+  \******************************************/
+/*! exports provided: callApi */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "callApi", function() { return callApi; });
+var API_URL = 'https://api.github.com/repos/binary-studio-academy/stage-2-es6-for-everyone/contents/resources/api/';
+function callApi(endpoind, method) {
+    var url = API_URL + endpoind;
+    var options = {
+        method: method
+    };
+    return fetch(url, options)
+        .then(function (response) {
+        return response.ok ? response.json() : Promise.reject(Error('Failed to load'));
+    })
+        .catch(function (error) {
+        throw error;
+    });
+}
+
+
+
+/***/ }),
+
+/***/ "./src/tscript/modalView.ts":
+/*!**********************************!*\
+  !*** ./src/tscript/modalView.ts ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view */ "./src/tscript/view.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
+
+var ModalView = /** @class */ (function (_super) {
+    __extends(ModalView, _super);
+    function ModalView(fighterInfo) {
+        var _this = _super.call(this) || this;
+        _this.createModal(fighterInfo);
+        return _this;
+    }
+    ModalView.prototype.createModal = function (fighterInfo) {
+        this.element = this.createElement({ tagName: 'div', className: 'modal-wrap' });
+        var modal = this.createElement({ tagName: 'div', className: 'modal' });
+        var close = this.createElement({ tagName: 'span', className: 'modal-button' });
+        close.innerText = "X";
+        close.addEventListener("click", function () {
+            this.parentNode.parentNode.style.display = "none";
+        });
+        this.element.addEventListener("dblclick", function () {
+            this.style.display = "none";
+        });
+        modal.append(close);
+        var list = this.createList(fighterInfo);
+        modal.append.apply(modal, __spread(list));
+        this.element.appendChild(modal);
+    };
+    ModalView.prototype.createList = function (fighterInfo) {
+        var i = 0;
+        var list = [];
+        Object.defineProperty(fighterInfo, "_id", { enumerable: false });
+        Object.defineProperty(fighterInfo, "source", { enumerable: false });
+        for (var key in fighterInfo) {
+            var p = this.createElement({ tagName: 'p', className: 'modal-text' });
+            p.innerText = key + ":" + fighterInfo[key];
+            list.push(p);
+            i++;
+        }
+        return list;
+    };
+    return ModalView;
+}(_view__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (ModalView);
+
+
+/***/ }),
+
+/***/ "./src/tscript/services/fightersService.ts":
+/*!*************************************************!*\
+  !*** ./src/tscript/services/fightersService.ts ***!
+  \*************************************************/
+/*! exports provided: fighterService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fighterService", function() { return fighterService; });
+/* harmony import */ var _helpers_apiHelper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/apiHelper */ "./src/tscript/helpers/apiHelper.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+var FighterService = /** @class */ (function () {
+    function FighterService() {
+    }
+    FighterService.prototype.getFighters = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var endpoint, apiResult, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        endpoint = 'fighters.json';
+                        return [4 /*yield*/, Object(_helpers_apiHelper__WEBPACK_IMPORTED_MODULE_0__["callApi"])(endpoint, 'GET')];
+                    case 1:
+                        apiResult = _a.sent();
+                        return [2 /*return*/, JSON.parse(atob(apiResult.content))];
+                    case 2:
+                        error_1 = _a.sent();
+                        throw error_1;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FighterService.prototype.getFighterDetails = function (_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var endpoint, apiResult, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        endpoint = "details/fighter/" + _id + ".json";
+                        return [4 /*yield*/, Object(_helpers_apiHelper__WEBPACK_IMPORTED_MODULE_0__["callApi"])(endpoint, 'GET')];
+                    case 1:
+                        apiResult = _a.sent();
+                        return [2 /*return*/, JSON.parse(atob(apiResult.content))];
+                    case 2:
+                        error_2 = _a.sent();
+                        throw error_2;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return FighterService;
+}());
+var fighterService = new FighterService();
+
+
+
+/***/ }),
+
+/***/ "./src/tscript/view.ts":
+/*!*****************************!*\
+  !*** ./src/tscript/view.ts ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var View = /** @class */ (function () {
+    function View() {
+    }
+    View.prototype.createElement = function (_a) {
+        var tagName = _a.tagName, _b = _a.className, className = _b === void 0 ? '' : _b, _c = _a.attributes, attributes = _c === void 0 ? {} : _c;
+        var element = document.createElement(tagName);
+        element.classList.add(className);
+        Object.keys(attributes).forEach(function (key) { return element.setAttribute(key, attributes[key]); });
+        return element;
+    };
+    return View;
+}());
+/* harmony default export */ __webpack_exports__["default"] = (View);
+
 
 /***/ })
 

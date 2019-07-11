@@ -4,13 +4,14 @@ module.exports = {
   entry: './index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'), 
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    filename: 'bundle.js'
   },
+  resolve: { extensions: [".ts", ".js"], 
+  modules: [path.resolve('./src'), 'node_modules'] },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: 'ts-loader',
         exclude: /node_modules/
       },

@@ -1,5 +1,5 @@
 import FightersView from './fightersView';
-import { fighterService } from './services/fightersService';
+import {fighterService} from './services/fightersService';
 import FightView from './fightView';
 export default class App {
   constructor() {

@@ -1,9 +1,25 @@
 import { callApi } from '../helpers/apiHelper';
-
-class FighterService {
-  async getFighters() {
+interface IFighterService{
+  getFighters:()=>Promise<Array<{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+  }>>
+}
+class FighterService implements IFighterService{
+   public async getFighters():Promise<Array<{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+    }>> {
     try {
-      const endpoint = 'fighters.json';
+      const endpoint:string = 'fighters.json';
       const apiResult = await callApi(endpoint, 'GET');
 
       return JSON.parse(atob(apiResult.content));
@@ -12,7 +28,14 @@ class FighterService {
     }
   }
 
-  async getFighterDetails(_id) {
+  async getFighterDetails(_id:string):Promise<{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+    }>{
     // implement this method
     // endpoint - `details/fighter/${_id}.json`;
     try {
@@ -24,6 +47,5 @@ class FighterService {
     }
   }
 }
-
-const fighterService = new FighterService();
+const fighterService =new FighterService();
 export {fighterService}

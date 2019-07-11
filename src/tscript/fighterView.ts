@@ -1,13 +1,41 @@
 import View from './view';
 
 class FighterView extends View {
-  constructor(fighter, handleClick) {
+  constructor(fighter:{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+    }, handleClick:(event:Event,fighter:{
+      _id:string,
+      name:string,
+      health:number,
+      attack:number,
+      defense:number,
+      source:string
+      })=>Promise<void>) {
     super();
 
     this.createFighter(fighter, handleClick);
   }
 
-  createFighter(fighter, handleClick) {
+  createFighter(fighter:{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+    }, handleClick:(event:Event,fighter:{
+    _id:string,
+    name:string,
+    health:number,
+    attack:number,
+    defense:number,
+    source:string
+    })=>Promise<void>) {
     const { name, source } = fighter;
     const nameElement = this.createName(name);
     const imageElement = this.createImage(source);
@@ -17,14 +45,14 @@ class FighterView extends View {
     this.element.addEventListener('click', event => handleClick(event, fighter), false);
   }
 
-  createName(name) {
+  createName(name:string) {
     const nameElement = this.createElement({ tagName: 'span', className: 'name' });
     nameElement.innerText = name;
 
     return nameElement;
   }
 
-  createImage(source) {
+  createImage(source:string) {
     const attributes = { src: source };
     const imgElement = this.createElement({
       tagName: 'img',
