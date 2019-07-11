@@ -1,8 +1,9 @@
-interface IJSONFighter{
+export interface ijsonfighter{
     _id:string,
     name:string,
     health:number,
     attack:number,
     defense:number,
-    source:string
+    source:string,
+    [key:string]:string|number
 }

@@ -1,13 +1,11 @@
-import { PassThrough } from "stream";
-
+import {ijsonfighter} from './jsonfighter'
 export default class Fighter{
     public name:string;
     public health:number;
     public attack:number;
     public defense:number;
     public source:string;
-    constructor(fighterInfo:
-        {_id:string,name:string,health:number,attack:number,defense:number,source:string}){
+    constructor(fighterInfo:ijsonfighter){
         const {name,health,attack,defense,source}=fighterInfo;
         this.name=name;
         this.health=health;
